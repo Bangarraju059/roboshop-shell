@@ -10,6 +10,7 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/robos
  curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
 
  cd /tmp
+ rm -rf mongod
  unzip -o mongodb.zip
  cd mongodb-main
  mongo < catalogue.js
