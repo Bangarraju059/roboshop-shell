@@ -1,4 +1,4 @@
-set -e
+#set -e
 
  echo Setting NodeJS repos
  curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/cart.log
