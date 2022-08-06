@@ -11,6 +11,7 @@ set -e
 
  DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysql.log | awk '{print $NF}' )
 
+echo MYSQL = $MYSQL_PASSWORD
  echo "alter user 'root'@'localhost' identified with mysql_native_password by '$MYSQL_PASSWORD'; " | mysql --connect-expired-password -uroot -p${DEFAULT_PASSWORD}
 
 echo "uninstall plugin validate_password" | mysql -uroot -p$MYSQL_PASSWORD
