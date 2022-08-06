@@ -7,11 +7,13 @@ set -e
  systemctl enable mysqld
  systemctl start mysqld
 
- grep temp /var/log/mysqld.log
+ # grep temp /var/log/mysqld.log
 
- mysql_secure_installation
+ DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysql.log | awk '{print $NF}' )
 
- mysql -uroot -pRoboShop@1
+ echo "alter user 'root'@'localhost' identified with mysql_native_password by 'RoboShop@1'; " | mysql --connect-expired-password -uroot -p${DEFAULT_PASSWORD}
+
+echo "uninstall plugin validate_password" | mysql -uroot -pRoboShop@1
 
 #> uninstall plugin validate_password;
 
