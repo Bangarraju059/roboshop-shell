@@ -7,7 +7,7 @@
    echo -e "\e[32mSUCCESS\e[0m"
   else
     echo -e "\e[31mFAILURE\e[0m"
-    exit
+    exit 1
     fi
 
  echo Installing NodeJS
@@ -17,7 +17,7 @@
     echo -e "\e[32mSUCCESS\e[0m"
    else
      echo -e "\e[31mFAILURE\e[0m"
-     exit
+     exit 1
      fi
 
  echo Adding Applicatyion user
@@ -27,7 +27,7 @@
     echo -e "\e[32mSUCCESS\e[0m"
    else
      echo -e "\e[31mFAILURE\e[0m"
-     exit
+     exit 1
      fi
 
  echo Downloading Application content
@@ -38,7 +38,7 @@
     echo -e "\e[32mSUCCESS\e[0m"
    else
      echo -e "\e[31mFAILURE\e[0m"
-     exit
+     exit 1
      fi
 
  echo Cleaning old application content
@@ -48,7 +48,7 @@
     echo -e "\e[32mSUCCESS\e[0m"
    else
      echo -e "\e[31mFAILURE\e[0m"
-     exit
+     exit 1
      fi
 
  echo Extracting Application archive
@@ -60,7 +60,7 @@
     echo -e "\e[32mSUCCESS\e[0m"
    else
      echo -e "\e[31mFAILURE\e[0m"
-     exit
+     exit 1
      fi
 
  echo Installing NodeJS dependencies
@@ -70,7 +70,7 @@
     echo -e "\e[32mSUCCESS\e[0m"
    else
      echo -e "\e[31mFAILURE\e[0m"
-     exit
+     exit 1
      fi
 
 echo Configuring card systemD service
@@ -83,5 +83,5 @@ echo Configuring card systemD service
     echo -e "\e[32mSUCCESS\e[0m"
    else
      echo -e "\e[31mFAILURE\e[0m"
-     exit
+     exit 1
      fi
