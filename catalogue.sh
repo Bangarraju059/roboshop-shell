@@ -1,7 +1,14 @@
-set -e
+# set -e
 
+ source common.sh
+
+ echo "Configuring NodeJS yum repos"
  curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+ StatusCheck
+
+ echo Installing NodeJS
  yum install nodejs -y
+ StatusCheck
 
  useradd roboshop
 
