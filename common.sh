@@ -47,6 +47,7 @@
 
    echo Configuring card systemD service
     mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>>/tmp/${COMPONENT}.log
+    StatusCheck
 
     echo Starting ${COMPONENT} Service
     systemctl daemon-reload &>>/tmp/${COMPONENT}.log && systemctl start ${COMPONENT} &>>/tmp/${COMPONENT}.log && systemctl enable ${COMPONENT} &>>/tmp/${COMPONENT}.log
