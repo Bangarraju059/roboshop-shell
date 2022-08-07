@@ -20,6 +20,7 @@
      exit 1
      fi
 
+
  echo Adding Applicatyion user
  useradd roboshop &>>/tmp/cart.log
  if [ $? -eq 0 ]
