@@ -44,4 +44,11 @@
    echo Installing NodeJS dependencies
    npm install &>>/tmp/${COMPONENT}.log
    StatusCheck
+
+   echo Configuring card systemD service
+    mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>>/tmp/${COMPONENT}.log
+
+    echo Starting ${COMPONENT} Service
+    systemctl daemon-reload &>>/tmp/${COMPONENT}.log && systemctl start ${COMPONENT} &>>/tmp/${COMPONENT}.log && systemctl enable ${COMPONENT} &>>/tmp/${COMPONENT}.log
+    StatusCheck
  }
