@@ -19,7 +19,7 @@
  StatusCheck
 
 id roboshop &>>/tmp/cart.log
- if [ $? -ne 0]; then
+ if [ $? -ne 0 ]; then
    echo Adding Applicatyion user
    useradd roboshop &>>/tmp/cart.log
    StatusCheck
