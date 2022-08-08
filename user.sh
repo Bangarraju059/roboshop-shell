@@ -1,4 +1,6 @@
 # set -e
- source common.sh
-  COMPONENT=user
-  NODEJS
+
+COMPONENT=user
+source common.sh
+
+NODEJS

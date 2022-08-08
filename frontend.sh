@@ -1,8 +1,7 @@
 #!/usr/bin/bash
 #set -e
-
-source common.sh
 COMPONENT=frontend
+source common.sh
 
 echo Insatlling Nginx
 yum install nginx -y &>>${LOG}
