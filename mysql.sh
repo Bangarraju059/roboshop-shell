@@ -22,10 +22,14 @@ StatusCheck
 
  # grep temp /var/log/mysqld.log
 
-DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}' )
+echo "show databases;" | mysql -uroot -p$MYSQL_PASSWORD &>>${LOG}
+if [ $? -ne 0 ]; then
+  echo Changing default password
+  DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}' )
+  echo "alter user 'root'@'localhost' identified with mysql_native_password by '$MYSQL_PASSWORD';" | mysql --connect-expired-password -uroot -p${DEFAULT_PASSWORD}
+  StatusCheck
+fi
 
-#echo MYSQL PASSWORD = $MYSQL_PASSWORD
-echo "alter user 'root'@'localhost' identified with mysql_native_password by '$MYSQL_PASSWORD';" | mysql --connect-expired-password -uroot -p${DEFAULT_PASSWORD}
 exit
 
 echo "uninstall plugin validate_password" | mysql -uroot -p$MYSQL_PASSWORD
