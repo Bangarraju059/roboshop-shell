@@ -1,9 +1,15 @@
-set -e
+#set -e
 
- curl -L https://raw.githubusercontent.com/roboshop-devops-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo
- yum install redis-6.2.7 -y
+echo Setup YUM Repo
+curl -L https://raw.githubusercontent.com/roboshop-devops-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>>${LOG}
+StatusCheck
+
+echo Install Redis
+yum install redis-6.2.7 -y
+StatusCheck
 
 # update listen IP
 
- systemctl enable redis
- systemctl start redis
+echo Start Redis Server
+systemctl enable redis &>>${LOG} && systemctl restart redis &>>${LOG}
+StatusCheck
