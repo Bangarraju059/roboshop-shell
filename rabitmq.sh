@@ -1,6 +1,11 @@
 source=common.sh
 COMPONENT=rabbitmq
 
+if [ -z "$APP_RABBITMQ_PASSWORD" ]; then
+  echo -e "\e[33m env variable APP_RABBITMQ_PASSWORD is needed \e[0m"
+  exit 1
+  fi
+
 echo Setup YUM Repos
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>${LOG}
 StatusCheck
@@ -14,5 +19,5 @@ systemctl enable rabbitmq-server &>>${LOG} && systemctl start rabbitmq-server &>
 StatusCheck
 
 echo Add App User in RabbitMQ
-rabbitmqctl add_user roboshop roboshop123 && rabbitmqctl set_user_tags roboshop administrator && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+rabbitmqctl add_user roboshop ${APP_RABBITMQ_PASSWORD} && rabbitmqctl set_user_tags roboshop administrator && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
 StatusCheck
