@@ -87,5 +87,5 @@ StatusCheck
    echo -e "\e[31m You should run this script as root user or sudo  \e[0m"
    exit 1
    fi
-LOG=${LOG}
+LOG=/tmp/${COMPONENT}.log
 rm -f ${LOG}
