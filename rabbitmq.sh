@@ -1,4 +1,4 @@
-source=common.sh
+source common.sh
 COMPONENT=rabbitmq
 
 if [ -z "$APP_RABBITMQ_PASSWORD" ]; then
