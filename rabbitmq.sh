@@ -18,6 +18,9 @@ echo Start RabbitMQ Service
 systemctl enable rabbitmq-server &>>${LOG} && systemctl start rabbitmq-server &>>${LOG}
 StatusCheck
 
-echo Add App User in RabbitMQ
-rabbitmqctl add_user roboshop ${APP_RABBITMQ_PASSWORD} && rabbitmqctl set_user_tags roboshop administrator && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
-StatusCheck
+rabbitmqctl list_users | grep roboshop &>>${LOG}
+if [ $? -ne 0  ]; then
+  echo Add App User in RabbitMQ
+  rabbitmqctl add_user roboshop ${APP_RABBITMQ_PASSWORD} && rabbitmqctl set_user_tags roboshop administrator && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+  StatusCheck
+ fi
