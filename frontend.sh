@@ -5,7 +5,7 @@ source common.sh
 COMPONENT=frontend
 
 echo Insatlling Nginx
-yum install nginx -y
+yum install nginx -y &>>${LOG}
 StatusCheck
 
 DOWNLOAD
